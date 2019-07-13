@@ -1,2 +1,18 @@
 {% extends 'base/layout.html' %}
 {% load static %}
+{% block b %}
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <p class="h2 text-uppercase mb-3 text-center text-info">Login</p>
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %} {{ form.as_p }}
+                <input type="submit" name="" class=" btn-block btn btn-info" value="{{ value }}">
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}

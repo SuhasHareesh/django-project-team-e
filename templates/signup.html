@@ -1,0 +1,41 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block b %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<div class="container" id="container">
+        {% if signup %}
+        <div class="form-container sign-in-container">
+            <form enctype="multipart/form-data" method="POST">
+                <h1>Create Account</h1>
+                {% csrf_token %} {{ form.as_p }}
+            <input type="submit" name="" class=" btn-block btn btn-info" value="{{ value }}">
+            </form>
+        </div>
+        {% endif %}
+        {% if login %}
+        <div class="form-container sign-in-container">
+            <form enctype="multipart/form-data" method="POST">
+                <h1>Sign in</h1>
+                {% csrf_token %} {{ form.as_p }}
+            <input type="submit" name="" class=" btn-block btn btn-info" value="{{ value }}">
+            </form>
+        </div>
+        {% endif %}
+        <div class="overlay-container">
+                <div class="overlay">
+                    {% if login %}
+                    <div class="overlay-panel overlay-right">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                    </div>
+                    {% endif %}
+                    {% if signup %}
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+{% endblock %}

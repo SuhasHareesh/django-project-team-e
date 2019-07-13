@@ -1,0 +1,33 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block b %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <div class='container' id="container">
+        <div class="overlay-container">
+            <div class="overlay">
+                    <div class="overlay-panel overlay-right">
+                        <h1> Hotel </h1>
+                        <p><a class='ghost' href="/createhotel/"> Sign Up </a></p>
+                        <p><a class='ghost' href="/hotellogin/"> Sign In </a></p>
+                    </div>
+            </div>
+        </div>
+        <div class='container-left'> 
+            <div class='overlayR'>
+                <div class="overlay-panel overlay-left">   
+                    <h1 style="color:black;"> User </h1>
+                    <p><a class='R' style='color:black;' class='ghost' href="/createuser/"> Register </a></p>
+                    <p><a class='R' style='color:black;' class='ghost' href="/userlogin/"> Login </a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}  
+
+
+
+
+   
+          
+            
+            

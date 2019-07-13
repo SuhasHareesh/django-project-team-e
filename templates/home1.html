@@ -1,0 +1,47 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block b %}
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <div class='container'>
+        <p style='font-weight: 700; font-size: 20; margin-right: 10px;'>Logged in as {{ name }}
+        <a class='R' style='float:right; color:black' href='/logout/'>Logout</a><br></p>
+        <p style ='text-align:center;'> Number of Tables = {{ hotel }} </p>
+        {% if update1 %}
+        <a class='R' style='color:black; margin-left: 100px' href='/update/{{ id }}'> Do You Want To Update The Number of Available Tables? </a><br><br>
+        <p><h1 style="text-align: center;">RESERVATIONS</h1></p>
+        {% endif %}
+        {% if table %}
+        <table>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Contact No</th>
+        <th scope="col">No of Seats</th>
+        <th scope="col">Date and Time</th>  
+        <th scope="col">Action</th>      
+      </tr>
+    </thead>
+    <tbody>
+    {% for r in reservations %}
+      <tr>
+        <th scope="row">{{r.reservation_name}}</th>
+        <td>{{r.contact}}</td> 
+        <td>{{r.reservation_people}}</td>
+        <td>{{r.reservation_date}}
+        <td><a class='R' style='color:black;' href="/delete/{{ r.id }}/{{ id }}"> Delete</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+        {% if update %}
+            <div class="col">
+                <h2 style='align:center;'>Update</h2>
+                <form enctype="multipart/form-data" method="POST">
+                    {% csrf_token %} {{ form.as_p }}
+                    <input type="submit" name="" class=" btn-block btn btn-info" value="{{ value }}">
+                </form>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

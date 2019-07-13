@@ -1,0 +1,51 @@
+{% extends 'base/layout.html' %}
+
+{% load static %}
+
+{% block b %}
+
+
+
+<div class='container'>
+<p style='font-weight: 700; font-size: 20; margin-left: 15px'>You are logged in as {{username}}
+<a class='R' style='float:right; color:black; margin-right: 8px;'href='/logout'>Logout</a></p>
+    {% if details %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <div style="margin-left: 30px; margin-top: 60px;">
+        <p> Hotel name : {{user.name}}</p>
+        <p> Hotel Address : {{user.address}}</p>
+        <p> Number of Tables Available : {{user.n_tables}}</p>
+        <p> Contact  No : {{user.c_no}}</p>
+        <a class='R' style="color:black;" href = '/reserveseat/{{ user.id }}'> Book Now </a>
+    </div>
+    {% else %}
+    <link rel="stylesheet" href="{% static 'css/signup2.css' %}">
+    <form action="" method="POST" >
+    {% csrf_token %}{{form.reservation_name}}{{form.contact }}{{form.reservation_people}}
+<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+  {{ form.reservation_date }}
+  <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+    <div class="input-group-text"><i class="fa fa-calendar"></i><link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> 
+      <link rel="stylesheet" href="{% static 'css/tempusdominus-bootstrap-4.min.css' %}"></div>
+  </div>
+</div>
+<input type="submit" value="Submit" class="btn btn-info">
+    </form>
+</div>
+{% endif %}
+<script>
+  $(function () {
+    $("#datetimepicker1").datetimepicker({
+      format: 'DD/MM/YYYY HH:mm',
+    });
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="{% static 'js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+
+{% endblock %}
